@@ -12,6 +12,7 @@ export interface FabricJSEditor {
   deleteAll: () => void
   deleteSelected: () => void
   toggleDrawingMode: () => void
+  enterEraserMode: () => void
   fillColor: string
   strokeColor: string
   setFillColor: (color: string) => void
@@ -90,6 +91,11 @@ const buildEditor = (
       canvas.getActiveObjects().forEach((object) => object.set({ fill }))
       canvas.renderAll()
     },
+    enterEraserMode: () => {
+      //  same as `PencilBrush`
+      canvas.freeDrawingBrush = new fabric.EraserBrush(canvas);
+      canvas.isDrawingMode = true;
+    },
     setStrokeColor: (stroke: string) => {
       _setStrokeColor(stroke)
       canvas.getActiveObjects().forEach((object) => {
@@ -164,13 +170,13 @@ const useFabricJSEditor = (
     },
     editor: canvas
       ? buildEditor(
-          canvas,
-          fillColor,
-          strokeColor,
-          setFillColor,
-          setStrokeColor,
-          scaleStep
-        )
+        canvas,
+        fillColor,
+        strokeColor,
+        setFillColor,
+        setStrokeColor,
+        scaleStep
+      )
       : undefined
   }
 }
