@@ -11,6 +11,7 @@ export interface FabricJSEditor {
   updateText: (text: string) => void
   deleteAll: () => void
   deleteSelected: () => void
+  toggleDrawingMode: () => void
   fillColor: string
   strokeColor: string
   setFillColor: (color: string) => void
@@ -60,6 +61,9 @@ const buildEditor = (
       const object = new fabric.Textbox(text, { ...TEXT, fill: strokeColor })
       object.set({ text: text })
       canvas.add(object)
+    },
+    toggleDrawingMode: () => {
+      canvas.isDrawingMode = !canvas.isDrawingMode
     },
     updateText: (text: string) => {
       const objects: any[] = canvas.getActiveObjects()
