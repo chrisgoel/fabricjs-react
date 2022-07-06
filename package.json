@@ -62,6 +62,6 @@
     "dist"
   ],
   "dependencies": {
-    "fabric": "^5.2.1"
+    "fabric": "git@github.com:chrisgoel/fabric.js.git"
   }
 }
