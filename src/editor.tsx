@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { fabric } from 'fabric'
 import { CIRCLE, RECTANGLE, LINE, TEXT, FILL, STROKE } from './defaultShapes'
 import { useEffect, useState } from 'react'
